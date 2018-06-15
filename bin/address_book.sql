@@ -1,8 +1,28 @@
+DROP TABLE IF EXISTS PHONE;
+DROP TABLE IF EXISTS ADDRESS;
 DROP TABLE IF EXISTS CONTACT;
 
+DROP SEQUENCE IF EXISTS contact_id_seq;
+DROP SEQUENCE IF EXISTS phone_id_seq;
+DROP SEQUENCE IF EXISTS address_id_seq;
+
 CREATE TABLE CONTACT
-(id int primary key,
-  name varchar(255),
-  address varchar(255));
+(
+  id   INT PRIMARY KEY,
+  name VARCHAR(255)
+);
+
+CREATE TABLE PHONE (
+  id         INT PRIMARY KEY,
+  phone      VARCHAR(30),
+  contact_id INT REFERENCES CONTACT (id)
+);
+CREATE TABLE ADDRESS (
+  id         INT PRIMARY KEY,
+  address    VARCHAR(245),
+  contact_id INT REFERENCES CONTACT (id)
+);
 
 CREATE SEQUENCE contact_id_seq START 1;
+CREATE SEQUENCE phone_id_seq START 1;
+CREATE SEQUENCE address_id_seq START 1;

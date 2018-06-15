@@ -1,25 +1,24 @@
 package ru.ifmo.addressbook;
 
-public class Contact {
-    private Integer id;
+import java.util.ArrayList;
+import java.util.List;
+
+public class Contact extends Identifiable {
     private String name;
     private String address;
+    private List<Phone> phones;
+    private List<Address> addresses;
 
     public Contact() {
     }
 
     public Contact(Integer id, String name, String address) {
-        this.id = id;
+        super(id);
         this.name = name;
         this.address = address;
-    }
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
+        phones = new ArrayList<>();
+        addresses = new ArrayList<>();
     }
 
     public String getName() {
@@ -36,5 +35,21 @@ public class Contact {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public List<Phone> getPhones() {
+        return phones;
+    }
+
+    public void setPhones(List<Phone> phones) {
+        this.phones = phones;
+    }
+
+    public List<Address> getAddresses() {
+        return addresses;
+    }
+
+    public void setAddresses(List<Address> addresses) {
+        this.addresses = addresses;
     }
 }

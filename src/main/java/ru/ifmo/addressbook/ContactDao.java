@@ -4,7 +4,7 @@ import java.sql.*;
 import java.util.List;
 
 public class ContactDao {
-    private static final String TABLE_NAME = "CONTACT";
+    private static final String CONTACT_TABLE_NAME = "CONTACT";
 
     private final Connection con;
 
@@ -20,7 +20,7 @@ public class ContactDao {
         if (contact.getId() == null) {
             // INSERT
             try (PreparedStatement stmnt =
-                         con.prepareStatement("INSERT INTO " + TABLE_NAME + " (id, name, address) " +
+                         con.prepareStatement("INSERT INTO " + CONTACT_TABLE_NAME + " (id, name, address) " +
                                  "VALUES (?, ?, ?)")) {
                 int id = nextId();
 
@@ -39,7 +39,7 @@ public class ContactDao {
         else {
             // UPDATE
             try (PreparedStatement stmnt =
-                         con.prepareStatement("UPDATE " + TABLE_NAME + " SET name=?, address=? " +
+                         con.prepareStatement("UPDATE " + CONTACT_TABLE_NAME + " SET name=?, address=? " +
                                  "WHERE id=?")) {
 
                 stmnt.setString(1, contact.getName());
@@ -67,7 +67,16 @@ public class ContactDao {
     }
 
     public Contact get(int id) {
-        throw new UnsupportedOperationException("Not implemented");
+        try (PreparedStatement stmnt =
+                     con.prepareStatement("SELECT * " +
+                             "FROM CONTACT c " +
+                             "  JOIN ADDRESS a ON c.id = a.contact_id" +
+                             "  JOIN PHONE ON c.id = PHONE.contact_id")) {
+
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     public void remove(int id) {
