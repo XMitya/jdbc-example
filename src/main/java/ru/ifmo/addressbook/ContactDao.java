@@ -77,6 +77,8 @@ public class ContactDao {
         catch (SQLException e) {
             e.printStackTrace();
         }
+
+        return null;
     }
 
     public void remove(int id) {
