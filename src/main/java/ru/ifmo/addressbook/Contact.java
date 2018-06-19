@@ -1,21 +1,27 @@
 package ru.ifmo.addressbook;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Table(name = "contact")
+@Entity
 public class Contact extends Identifiable {
+    @Column(name = "name")
     private String name;
-    private String address;
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY, mappedBy = "contact")
     private List<Phone> phones;
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY, mappedBy = "contact")
     private List<Address> addresses;
 
     public Contact() {
     }
 
-    public Contact(Integer id, String name, String address) {
+    public Contact(Integer id, String name) {
         super(id);
         this.name = name;
-        this.address = address;
 
         phones = new ArrayList<>();
         addresses = new ArrayList<>();
@@ -27,14 +33,6 @@ public class Contact extends Identifiable {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
     }
 
     public List<Phone> getPhones() {

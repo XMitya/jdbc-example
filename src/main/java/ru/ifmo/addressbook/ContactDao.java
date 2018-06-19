@@ -26,7 +26,7 @@ public class ContactDao {
 
                 stmnt.setInt(1, id);
                 stmnt.setString(2, contact.getName());
-                stmnt.setString(3, contact.getAddress());
+//                stmnt.setString(3, contact.getAddress());
 
                 stmnt.executeUpdate();
 
@@ -43,7 +43,7 @@ public class ContactDao {
                                  "WHERE id=?")) {
 
                 stmnt.setString(1, contact.getName());
-                stmnt.setString(2, contact.getAddress());
+//                stmnt.setString(2, contact.getAddress());
                 stmnt.setInt(3, contact.getId());
 
                 stmnt.executeUpdate();
