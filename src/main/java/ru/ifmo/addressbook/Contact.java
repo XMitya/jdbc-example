@@ -16,6 +16,9 @@ public class Contact extends Identifiable {
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY, mappedBy = "contact")
     private List<Address> addresses;
 
+    @Version
+    private Integer version;
+
     public Contact() {
     }
 

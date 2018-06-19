@@ -12,6 +12,9 @@ public class Address extends Identifiable {
     @JoinColumn(name = "contact_id")
     private Contact contact;
 
+    @Version
+    private Integer version;
+
     public Address() {
     }
 

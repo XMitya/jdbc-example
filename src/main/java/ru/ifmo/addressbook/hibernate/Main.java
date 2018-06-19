@@ -24,5 +24,11 @@ public class Main {
         c.getPhones().add(new Phone(null, "+71234567890", c));
 
         em.getTransaction().commit();
+
+        em.getTransaction().begin();
+
+        c.setName("Vasya");
+
+        em.getTransaction().commit();
     }
 }
