@@ -53,4 +53,12 @@ public class Contact extends Identifiable {
     public void setAddresses(List<Address> addresses) {
         this.addresses = addresses;
     }
+
+    public Integer getVersion() {
+        return version;
+    }
+
+    public void setVersion(Integer version) {
+        this.version = version;
+    }
 }

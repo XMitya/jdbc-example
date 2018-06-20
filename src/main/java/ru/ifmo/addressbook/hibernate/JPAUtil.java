@@ -17,6 +17,8 @@ public class JPAUtil {
     public static void shutdown() {
         if (factory != null) {
             factory.close();
+
+            factory = null;
         }
     }
 }
