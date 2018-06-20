@@ -26,9 +26,7 @@ public class Main {
         em.getTransaction().commit();
 
         em.getTransaction().begin();
-
-        c.setName("Vasya");
-
+        found.setName("Vasya");
         em.getTransaction().commit();
     }
 }
