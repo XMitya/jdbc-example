@@ -1,22 +1,24 @@
 -- DDL --
+-- Удаляем таблицы, чтобы пересоздать заново. http://www.postgresqltutorial.com/postgresql-drop-table/
 
 DROP TABLE IF EXISTS grade;
 DROP TABLE IF EXISTS student;
 DROP TABLE IF EXISTS teacher;
 DROP TABLE IF EXISTS course;
 
+-- Создание таблиц. http://www.postgresqltutorial.com/postgresql-create-table/
 CREATE TABLE public.course (
-  id SERIAL PRIMARY KEY,
-  title VARCHAR(255),
-  duration SMALLINT,
-  price NUMERIC
+  id SERIAL PRIMARY KEY, -- http://www.postgresqltutorial.com/postgresql-primary-key/
+  title VARCHAR(255), -- https://www.postgresql.org/docs/10/datatype-character.html
+  duration SMALLINT, -- https://www.postgresql.org/docs/current/datatype-numeric.html
+  price NUMERIC -- https://www.postgresql.org/docs/current/datatype-numeric.html
 );
 
 CREATE TABLE public.teacher (
   id SERIAL PRIMARY KEY,
   name CHARACTER VARYING(255),
   salary NUMERIC,
-  course_id INT REFERENCES public.course (id) ON DELETE RESTRICT
+  course_id INT REFERENCES public.course (id) ON DELETE RESTRICT -- http://www.postgresqltutorial.com/postgresql-foreign-key/
 );
 
 CREATE TABLE public.student (
@@ -36,6 +38,7 @@ CREATE TABLE public.grade (
 );
 
 -- DML --
+-- http://www.postgresqltutorial.com/postgresql-insert/
 
 INSERT INTO public.course (title, duration, price) VALUES ('Python', 150, 20000.00);
 INSERT INTO public.course (title, duration, price) VALUES ('PHP', 174, 25000.00);
