@@ -23,6 +23,9 @@ public class PostgresRepositoryFactory extends AbstractRepositoryFactory {
 
     @Override
     public void connect() throws SQLException {
+        if (cpds != null)
+            return;
+
         // Допустим, эти параметры берутся тоже из системных переменных.
         try {
             cpds = new ComboPooledDataSource();
@@ -43,5 +46,6 @@ public class PostgresRepositoryFactory extends AbstractRepositoryFactory {
     @Override
     protected void _close() {
         cpds.close();
+        cpds = null;
     }
 }

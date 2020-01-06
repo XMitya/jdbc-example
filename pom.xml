@@ -13,6 +13,7 @@
         <maven.compiler.target>13</maven.compiler.target>
         <postgres.version>42.2.8</postgres.version>
         <c3p0.version>0.9.1.2</c3p0.version>
+        <hibernate.version>5.4.10.Final</hibernate.version>
     </properties>
 
     <dependencies>
@@ -28,5 +29,10 @@
             <version>${c3p0.version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>${hibernate.version}</version>
+        </dependency>
     </dependencies>
 </project>
