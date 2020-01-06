@@ -7,7 +7,8 @@ import javax.persistence.*;
 public class GradeEntity {
     @Id
     @Column(name = "id")
-    @SequenceGenerator(name = "grade_id_gen", sequenceName = "grade_id_seq")
+    @SequenceGenerator(name = "grade_id_gen", sequenceName = "grade_id_seq", allocationSize = 1)
+    @GeneratedValue(generator = "grade_id_gen")
     private Integer id;
 
     @ManyToOne(fetch = FetchType.LAZY)

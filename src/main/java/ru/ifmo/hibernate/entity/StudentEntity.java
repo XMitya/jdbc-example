@@ -6,8 +6,9 @@ import javax.persistence.*;
 @Entity
 public class StudentEntity {
     @Id
-    @SequenceGenerator(name = "student_id_gen", sequenceName = "student_id_seq")
     @Column(name = "id")
+    @SequenceGenerator(name = "student_id_gen", sequenceName = "student_id_seq", allocationSize = 1)
+    @GeneratedValue(generator = "student_id_gen")
     private Integer id;
 
     @ManyToOne(fetch = FetchType.LAZY)

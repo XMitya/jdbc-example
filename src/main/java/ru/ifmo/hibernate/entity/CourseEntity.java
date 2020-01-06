@@ -7,7 +7,8 @@ import javax.persistence.*;
 public class CourseEntity {
     @Id
     @Column(name = "id")
-    @SequenceGenerator(name = "sourse_id_gen", sequenceName = "course_id_seq")
+    @SequenceGenerator(name = "course_id_gen", sequenceName = "course_id_seq", allocationSize = 1)
+    @GeneratedValue(generator = "course_id_gen")
     private Integer id;
 
     @Column(name = "title")
