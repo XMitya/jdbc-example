@@ -4,8 +4,13 @@ import ru.ifmo.hibernate.entity.CourseEntity;
 
 public class HibernateMain {
     public static void main(String[] args) {
+        final String host = "localhost:5432";
+        final String dbName = "ifmo";
+        final String username = "ifmo";
+        final String password = "q1w2e3";
+
         AbstractDaoFactory factory = AbstractDaoFactory.factory();
-        factory.connect();
+        factory.connect(host, dbName, username, password);
         final CourseDao courseDao = factory.createCourseDao();
 
         final CourseEntity brainfuck = new CourseEntity(null, "Brainfuck", (short) 1024, 67000.0);

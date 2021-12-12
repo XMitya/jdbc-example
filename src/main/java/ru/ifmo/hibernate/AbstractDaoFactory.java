@@ -14,7 +14,7 @@ public abstract class AbstractDaoFactory {
     }
 
     public abstract CourseDao createCourseDao();
-    public abstract void connect();
+    public abstract void connect(String host, String dbName, String username, String password);
 
     public void close() {
         _close();

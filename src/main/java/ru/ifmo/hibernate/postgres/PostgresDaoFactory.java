@@ -24,7 +24,7 @@ public class PostgresDaoFactory extends AbstractDaoFactory {
     }
 
     @Override
-    public void connect() {
+    public void connect(String host, String dbName, String username, String password) {
         if (sessionFactory != null)
             return;
 
@@ -35,9 +35,9 @@ public class PostgresDaoFactory extends AbstractDaoFactory {
         Properties settings = new Properties();
 
         settings.put(Environment.DRIVER, "org.postgresql.Driver");
-        settings.put(Environment.URL, "jdbc:postgresql://localhost:5432/ifmo");
-        settings.put(Environment.USER, "ifmo");
-        settings.put(Environment.PASS, "q1w2e3");
+        settings.put(Environment.URL, "jdbc:postgresql://%s/%s".formatted(host, dbName));
+        settings.put(Environment.USER, username);
+        settings.put(Environment.PASS, password);
         settings.put(Environment.DIALECT, "org.hibernate.dialect.PostgreSQLDialect");
         settings.put(Environment.SHOW_SQL, "true");
         settings.put(Environment.CURRENT_SESSION_CONTEXT_CLASS, "thread");
