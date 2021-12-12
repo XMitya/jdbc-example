@@ -21,7 +21,7 @@ public abstract class AbstractDaoFactory {
     }
 
     public abstract CourseDao createCourseDao() throws SQLException;
-    public abstract void connect() throws SQLException;
+    public abstract void connect(String host, String dbName, String username, String password) throws SQLException;
 
     public void close() throws SQLException {
         _close();

@@ -10,9 +10,14 @@ import java.sql.SQLException;
 
 public class RepositoryMain {
     public static void main(String[] args) throws SQLException {
-        AbstractRepositoryFactory factory = AbstractRepositoryFactory.getFactory();
+        // Допустим, эти параметры берутся из системных переменных.
+        final String host = "localhost:5432";
+        final String dbName = "ifmo";
+        final String username = "ifmo";
+        final String password = "q1w2e3";
 
-        factory.connect();
+        AbstractRepositoryFactory factory = AbstractRepositoryFactory.getFactory();
+        factory.connect(host, dbName, username, password);
 
         final Repository<CourseEntity> repository = factory.createRepository(CourseEntity.class);
 

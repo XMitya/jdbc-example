@@ -7,8 +7,13 @@ import java.util.List;
 
 public class DaoMain {
     public static void main(String[] args) throws SQLException {
+        // Допустим, эти параметры берутся из системных переменных.
+        final String host = "localhost:5432";
+        final String dbName = "ifmo";
+        final String username = "ifmo";
+        final String password = "q1w2e3";
         final AbstractDaoFactory factory = AbstractDaoFactory.getDaoFactory();
-        factory.connect();
+        factory.connect(host, dbName, username, password);
 
         final CourseDao courseDao = factory.createCourseDao();
 

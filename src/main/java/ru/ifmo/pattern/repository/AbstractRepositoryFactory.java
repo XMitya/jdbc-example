@@ -16,7 +16,7 @@ public abstract class AbstractRepositoryFactory {
     }
 
     public abstract <T> Repository<T> createRepository(Class<T> entityType) throws SQLException;
-    public abstract void connect() throws SQLException;
+    public abstract void connect(String host, String dbName, String username, String password) throws SQLException;
 
     public void close() throws SQLException {
         _close();

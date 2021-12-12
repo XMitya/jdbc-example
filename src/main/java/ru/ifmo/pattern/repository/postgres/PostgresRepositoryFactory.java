@@ -22,18 +22,17 @@ public class PostgresRepositoryFactory extends AbstractRepositoryFactory {
     }
 
     @Override
-    public void connect() throws SQLException {
+    public void connect(String host, String dbName, String username, String password) throws SQLException {
         if (cpds != null)
             return;
 
-        // Допустим, эти параметры берутся тоже из системных переменных.
         try {
             cpds = new ComboPooledDataSource();
 
             cpds.setDriverClass("org.postgresql.Driver");
-            cpds.setJdbcUrl("jdbc:postgresql://localhost:5432/ifmo");
-            cpds.setUser("ifmo");
-            cpds.setPassword("q1w2e3");
+            cpds.setJdbcUrl("jdbc:postgresql://%s/%s".formatted(host, dbName));
+            cpds.setUser(username);
+            cpds.setPassword(password);
 
             cpds.setMinPoolSize(1);
             cpds.setMaxPoolSize(5);
