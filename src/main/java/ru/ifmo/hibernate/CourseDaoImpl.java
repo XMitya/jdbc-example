@@ -21,7 +21,10 @@ public class CourseDaoImpl implements CourseDao {
 
     @Override
     public void save(CourseEntity courseEntity) {
-        runInTransaction(session -> session.save(courseEntity));
+        runInTransaction(session -> {
+            session.saveOrUpdate(courseEntity);
+            return null;
+        });
     }
 
     @Override
